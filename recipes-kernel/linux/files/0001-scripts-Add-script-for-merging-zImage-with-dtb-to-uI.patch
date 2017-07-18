@@ -1,0 +1,33 @@
+From 20cd83d4ebdb626223714670f47080aed8ed0823 Mon Sep 17 00:00:00 2001
+From: Robert Lehmann <robert.lehmann@sitec-systems.de>
+Date: Tue, 18 Jul 2017 16:09:03 +0200
+Subject: [PATCH 1/2] scripts: Add script for merging zImage with dtb to uImage
+
+Ticket #1958
+---
+ scripts/genmergeimage.bash | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+ create mode 100755 scripts/genmergeimage.bash
+
+diff --git a/scripts/genmergeimage.bash b/scripts/genmergeimage.bash
+new file mode 100755
+index 0000000..0b89ed6
+--- /dev/null
++++ b/scripts/genmergeimage.bash
+@@ -0,0 +1,13 @@
++#!/bin/bash
++
++if [ $# -lt 2 ]; then
++  echo "Not enough arguments"
++  echo "Usage:"
++  echo "$1 <zImage-File> <dtb-File>"
++fi
++
++zimage=$1
++dtb=$2
++
++cat $1 $2 > /tmp/zImage-dtb
++mkimage -A arm -O linux -T multi -C none -a 80008000 -e 80008000 -n Linux+DTB -d /tmp/zImage-dtb uImage-dtb
+-- 
+2.1.4
+
