@@ -1,0 +1,49 @@
+From 90f0f486dd646d3b70797cbda4b0fba493e5c492 Mon Sep 17 00:00:00 2001
+From: Robert Lehmann <robert.lehmann@sitec-systems.de>
+Date: Tue, 1 Aug 2017 15:37:24 +0200
+Subject: [PATCH] dts: am335x-s7-base: Activate 1.8 V supply from power up
+
+Activate the 1.8 supply of the PMIC at boot up.
+
+Ticket #1967
+---
+ arch/arm/boot/dts/am335x-s7-base.dtsi | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/am335x-s7-base.dtsi b/arch/arm/boot/dts/am335x-s7-base.dtsi
+index ff0c2bd..4245ea2 100644
+--- a/arch/arm/boot/dts/am335x-s7-base.dtsi
++++ b/arch/arm/boot/dts/am335x-s7-base.dtsi
+@@ -472,6 +472,7 @@
+ 			regulator-name = "vdig1_1p8v";
+ 			regulator-min-microvolt = <1800000>;
+ 			regulator-max-microvolt = <1800000>;
++			regulator-always-on;
+ 		};
+ 
+ 		vdig2_reg: regulator@6 {
+@@ -544,8 +545,8 @@
+ 	};
+   mmc2_pins: pinmux_mmc2_pins {
+ 		pinctrl-single,pins = <
+-      0x80 ( PIN_INPUT | MUX_MODE2 ) /* (U9) gpmc_csn1.mmc1_clk */
+-      0x84 ( PIN_INPUT | MUX_MODE2 ) /* (V9) gpmc_csn2.mmc1_cmd */
++      0x80 ( PIN_INPUT_PULLUP | MUX_MODE2 ) /* (U9) gpmc_csn1.mmc1_clk */
++      0x84 ( PIN_INPUT_PULLUP | MUX_MODE2 ) /* (V9) gpmc_csn2.mmc1_cmd */
+       0x20 ( PIN_INPUT_PULLUP | MUX_MODE2 ) /* (U10) gpmc_ad8.mmc1_dat0 */
+       0x24 ( PIN_INPUT_PULLUP | MUX_MODE2 ) /* (T10) gpmc_ad9.mmc1_dat1 */
+       0x28 ( PIN_INPUT_PULLUP | MUX_MODE2 ) /* (T11) gpmc_ad10.mmc1_dat2 */
+@@ -569,6 +570,10 @@
+ 	bus-width = <4>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&mmc2_pins>;
++  max-frequency = <400000>;
++	enable-sdio-wakeup;
++	non-removable;
++  disable-wp;
+ 	status = "okay";
+ };
+ 
+-- 
+2.1.4
+
