@@ -1,0 +1,29 @@
+From 3730d3bda1c76d97ed59e6b0c87af6dd5d288fbf Mon Sep 17 00:00:00 2001
+From: Robert Lehmann <robert.lehmann@sitec-systems.de>
+Date: Fri, 15 Sep 2017 11:33:04 +0200
+Subject: [PATCH] dts: am335x-s7-base: Remove max-freq from mmc2
+
+Ticket #2013
+---
+ arch/arm/boot/dts/am335x-s7-base.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/am335x-s7-base.dtsi b/arch/arm/boot/dts/am335x-s7-base.dtsi
+index 4245ea2..331bb31 100644
+--- a/arch/arm/boot/dts/am335x-s7-base.dtsi
++++ b/arch/arm/boot/dts/am335x-s7-base.dtsi
+@@ -570,10 +570,9 @@
+ 	bus-width = <4>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&mmc2_pins>;
+-  max-frequency = <400000>;
+ 	enable-sdio-wakeup;
+ 	non-removable;
+-  disable-wp;
++    disable-wp;
+ 	status = "okay";
+ };
+ 
+-- 
+2.1.4
+

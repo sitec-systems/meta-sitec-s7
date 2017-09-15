@@ -1,0 +1,26 @@
+From 67e3098df88d8125a690d044b037ed2686606756 Mon Sep 17 00:00:00 2001
+From: Robert Lehmann <robert.lehmann@sitec-systems.de>
+Date: Fri, 15 Sep 2017 14:07:30 +0200
+Subject: [PATCH] dts: am335s-s7-base: Change level of gsm_en io
+
+The IO pin needs to be low on power up.
+---
+ arch/arm/boot/dts/am335x-s7-base.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/am335x-s7-base.dtsi b/arch/arm/boot/dts/am335x-s7-base.dtsi
+index 331bb31..4440498 100644
+--- a/arch/arm/boot/dts/am335x-s7-base.dtsi
++++ b/arch/arm/boot/dts/am335x-s7-base.dtsi
+@@ -107,7 +107,7 @@
+     pinctrl-0 = <&gsm_en>;
+     en-gpio = <&gpio2 24 0>;
+     en-name = "gsm_en";
+-    en-output-high;
++    en-output-low;
+     en-do-export;
+   };
+ 
+-- 
+2.1.4
+
