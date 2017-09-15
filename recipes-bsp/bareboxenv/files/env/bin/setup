@@ -1,0 +1,51 @@
+#!/bin/sh
+
+###############################################################################
+# setup -- Setup a new board Bootloader
+#
+# Robert Lehmann <robert.lehmann@sitec-systems.de>
+# Copyright (c) 2014 sitec systems GmbH
+#
+# This script setup a new som for the usage. It does several things:
+#   * cp the default enviroment image in the nand flash
+#   * reset the device
+#   * boot from network
+###############################################################################
+
+# Probe network connection
+echo "Checking the network connection"
+ifup eth0
+ping $eth0.serverip
+if [ $? -ne 0 ]
+then
+	echo "Server did not reply! Check the network settings"
+	exit 1
+fi
+echo "Done"
+echo ""
+
+# cp mtd-parts-nand
+tftp mtdparts-nand /env/init/mtdparts-nand
+[ $? -eq 0 ] || exit 1
+
+# cp ign_activate
+tftp ign_activate /env/bin/ign_activate
+[ $? -eq 0 ] || exit 1
+
+# cp ign_deactivate 
+tftp ign_deactivate /env/bin/ign_deactivate
+[ $? -eq 0 ] || exit 1
+
+# cp cp net
+tftp net /env/boot/net
+[ $? -eq 0 ] || exit 1
+
+# cp boot net
+tftp net_rbi /env/boot/net_rbi
+[ $? -eq 0 ] || exit 1
+
+# save current enviroment
+saveenv
+
+# reset the device
+reset
