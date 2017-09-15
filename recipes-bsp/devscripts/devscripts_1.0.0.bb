@@ -3,6 +3,8 @@ HOMEPAGE = "http://www.sitec-systems.de"
 SECTION = "base"
 MAINTAINER = "Robert Lehmann <robert.lehmann@sitec-systems.de>"
 
+PR = "r1"
+
 RDEPENDS_PN = "spi-tools"
 
 LICENSE = "LGPL-2.1"

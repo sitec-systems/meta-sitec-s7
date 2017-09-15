@@ -6,24 +6,12 @@ EOFF=/sys/class/gpio/gpio89/value
 
 # Starting state
 echo 0 > $EOFF
-echo 0 > $IGN
-echo 0 > $PWR
-
-# Falling Edge EOFF
-echo 1 > $EOFF
-
-# Wait 100ms
-usleep 100000
-
-# Rising Edge EOFF
-echo 0 > $EOFF
-
-# Wait 1 s
-sleep 1
-
-# Turn Pwr off
+echo 1 > $IGN
 echo 1 > $PWR
 
-# Wait 1 s
-sleep 1
+echo 0 > $IGN
+usleep 200000
+
+# Turn Pwr off
+echo 0 > $PWR
 
