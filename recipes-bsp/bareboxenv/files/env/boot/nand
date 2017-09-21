@@ -5,7 +5,7 @@ if [ "$1" = menu ]; then
 	exit
 fi
 
-bootargs-ip
+#bootargs-ip
 bootargs-display
 
 global.bootm.image="/dev/nand0.kernel.bb"
