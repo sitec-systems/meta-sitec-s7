@@ -5,4 +5,4 @@
 global linux.bootargs.dyn.display
 
 global.hostname=pcm051
-global.linux.bootargs.base="console=ttyO0,115200 loglevel=7"
+global.linux.bootargs.base="console=ttyO0,115200 loglevel=0"
