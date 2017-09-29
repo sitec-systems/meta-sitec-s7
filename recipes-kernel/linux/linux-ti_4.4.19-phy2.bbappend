@@ -11,4 +11,5 @@ SRC_URI += "file://0003-dts-am335x-s7-base-Activate-1.8-V-supply-from-power-.pat
 SRC_URI += "file://0004-dts-am335x-s7-base-Remove-max-freq-from-mmc2.patch"
 SRC_URI += "file://0005-dts-am335s-s7-base-Change-level-of-gsm_en-io.patch"
 SRC_URI += "file://0006-dts-am335x-s7-base-Add-adc-channels-to-base.patch"
+SRC_URI += "file://0007-dts-am335x-s7-base-Export-gpio31-to-userspace.patch"
 SRC_URI += "file://defconfig"
