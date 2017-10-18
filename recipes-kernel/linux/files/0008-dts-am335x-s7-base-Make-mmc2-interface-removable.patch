@@ -1,0 +1,39 @@
+From 7635a09fc4d0866c54cc5c4ef7e8604c58a7c928 Mon Sep 17 00:00:00 2001
+From: Robert Lehmann <robert.lehmann@sitec-systems.de>
+Date: Wed, 18 Oct 2017 09:53:53 +0200
+Subject: [PATCH] dts: am335x-s7-base: Make mmc2 interface removable
+
+This patch makes the mmc2 interface removable in polling mode. This
+gives the kernel and the user the ability to reset the wifi module which
+is mainly connected to this interface. For that the WIFI_EN GPIO is also
+exported to the userspace.
+
+Ticket #2076
+---
+ arch/arm/boot/dts/am335x-s7-base.dtsi | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/am335x-s7-base.dtsi b/arch/arm/boot/dts/am335x-s7-base.dtsi
+index e234492..95f385a 100644
+--- a/arch/arm/boot/dts/am335x-s7-base.dtsi
++++ b/arch/arm/boot/dts/am335x-s7-base.dtsi
+@@ -79,6 +79,7 @@
+     en-gpio = <&gpio3 19 0>;
+     en-name = "wifi_en";
+     en-output-high;
++    en-do-export;
+   };
+ 
+   gnss: gpio_exp@2 {
+@@ -581,7 +582,7 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&mmc2_pins>;
+ 	enable-sdio-wakeup;
+-	non-removable;
++	broken-cd;
+     disable-wp;
+ 	status = "okay";
+ };
+-- 
+2.1.4
+
