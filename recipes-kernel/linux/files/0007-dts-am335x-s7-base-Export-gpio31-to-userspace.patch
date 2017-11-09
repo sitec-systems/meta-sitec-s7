@@ -1,0 +1,25 @@
+From 9c9b25bde72b46efebac80b25e012c7ee1563006 Mon Sep 17 00:00:00 2001
+From: Robert Lehmann <robert.lehmann@sitec-systems.de>
+Date: Fri, 29 Sep 2017 11:13:51 +0200
+Subject: [PATCH] dts: am335x-s7-base: Export gpio31 to userspace
+
+Ticket #2050
+---
+ arch/arm/boot/dts/am335x-s7-base.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/boot/dts/am335x-s7-base.dtsi b/arch/arm/boot/dts/am335x-s7-base.dtsi
+index e1284f0..e234492 100644
+--- a/arch/arm/boot/dts/am335x-s7-base.dtsi
++++ b/arch/arm/boot/dts/am335x-s7-base.dtsi
+@@ -136,6 +136,7 @@
+     pinctrl-0 = <&k15>;
+     en-gpio = <&gpio0 31 0>;
+     en-name = "di_k15";
++    en-do-export;
+   };
+ };
+ 
+-- 
+2.1.4
+
