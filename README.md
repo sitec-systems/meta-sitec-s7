@@ -22,3 +22,9 @@ URI: git://git.openembedded.org/meta-openembedded
 URI git://git.phytec.de/meta-phytec
 
 > revision: 170cb21b78a327f96b17a723a5f1bff7b8d71176
+
+Building Instructions
+---------------------
+
+For instructions to build a BSP for sitec systems devices look at
+https://github.com/sitec-systems/sitec-bsp-manifest
